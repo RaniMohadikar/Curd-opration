@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div style="margin-top:30px;">
+     <th style="color: rgb(10, 159, 228); font-size:24px;">Customer Name</th>
+   </div> 
+ </div>    
+    <div class="row">
+      
+      <div class="col-lg-3; card" style="margin-top: 40px; width:200px;">
+          <div class="form-group" style="margin: 20px;margin-bottom:10px;">
+            <label for="text">First Name:</label>
+            <input type="text" [(ngModel)]='firstName' class="form-control" placeholder="Enter Name" id="text">
+          </div>
+          <div class="form-group"  style="margin-right:20px;margin-left:20px;margin-bottom: 10px;">
+            <label for="text">Last Name:</label>
+            <input type="text" [(ngModel)]='lastName' class="form-control" placeholder="Enter Last Name" id="text">
+          </div>    
+      
+      <button type="submit" class="btn btn-primary" style="margin: 10px;" *ngIf="!isEdit" (click)="onSubmit()">Submit</button>
+      <button type="submit" class="btn btn-primary" style="margin: 10px" *ngIf="isEdit" (click)="onUpdate()">Update</button>
+          </div>  
+      <div class="col-lg-9" style="margin-top:30px;margin-left: 30px;"> 
+        <table class="table table" style="background-color: rgb(58, 176, 231);">
+          <thead>
+            <tr>
+             
+              <th>First Name</th>
+              <th>Last Name</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+              
+            <tr *ngFor="let user of userList ; let i=index">
+              <td>{{user.firstName}}</td>
+              <td>{{user.lastName}}</td>
+              <td>
+                  <button type="button" class="btn btn-danger" style="margin:5px;" (click)="onClear(i)">Clear</button>
+                  <button type="button" class="btn btn-primary" style="margin:5px;" (click)="onEdit(i)">Edit</button>
+              </td>
+            </tr>         
+          </tbody>
+        </table>
+      </div>
+    
+    </div>
+  </div>
+
